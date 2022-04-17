@@ -1,0 +1,153 @@
+$window-width: 16%;
+
+.field-shadow {
+  -webkit-box-shadow: 8px 8px 7px -3px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 8px 8px 7px -3px rgba(66, 68, 90, 1);
+  box-shadow: 8px 8px 7px -3px rgba(66, 68, 90, 1);
+}
+
+.field-sm-shadow {
+  -webkit-box-shadow: 8px 8px 22px -10px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 8px 8px 22px -10px rgba(66, 68, 90, 1);
+  box-shadow: 8px 8px 22px -10px rgba(66, 68, 90, 1);
+}
+
+.container {
+  padding: 2%;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.page-title {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.current-date {
+  margin-left: auto;
+}
+
+.search-bar {
+  margin-left: 1%;
+  background-color: rgb(208, 208, 208);
+  padding: 1%;
+  border-radius: 0.5em;
+}
+
+.search-bar:hover {
+  background-color: rgb(161, 161, 161);
+  cursor: pointer;
+}
+
+.content {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-windows {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.revenue {
+  padding: 2%;
+  border-radius: 0.75em;
+  width: $window-width;
+  background-color: rgb(142, 224, 171);
+}
+
+.project-income {
+  padding: 2%;
+  width: $window-width;
+  border-radius: 0.75em;
+  background-color: rgb(111, 213, 213);
+}
+
+.quotes {
+  padding: 2%;
+  width: $window-width;
+  border-radius: 0.75em;
+  background-color: rgb(165, 137, 224);
+}
+
+.outstanding-invoces {
+  padding: 2%;
+  width: $window-width;
+  border-radius: 0.75em;
+  background-color: rgb(221, 110, 182);
+}
+
+.value {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.description {
+  margin-top: 2%;
+}
+
+.summary-chart-milestones {
+  margin-top: 8%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.expenses-chart {
+  width: 60%;
+  background-color: azure;
+  padding: 2%;
+  border-radius: 0.75em;
+  text-align: justify;
+}
+
+.title {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.chart {
+  margin-top: 2%;
+}
+
+.monthly-milestones {
+  width: 30%;
+  background-color: azure;
+  padding: 2%;
+  border-radius: 0.75em;
+  text-align: justify;
+}
+
+.milestones {
+  margin-top: 2%;
+}
+
+.analytics {
+  margin-top: 8%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.anual-leads {
+  width: 65%;
+  background-color: azure;
+  padding: 2%;
+  border-radius: 0.75em;
+  text-align: justify;
+}
+
+.weakly-osi {
+  width: 25%;
+  background-color: azure;
+  padding: 2%;
+  border-radius: 0.75em;
+  text-align: justify;
+}

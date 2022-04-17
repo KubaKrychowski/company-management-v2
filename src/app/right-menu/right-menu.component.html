@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="top-panel">
+    <select name="language" id="">
+      <option>
+        EN
+      </option>
+
+      <option>
+        PL
+      </option>
+    </select>
+
+    <i class="bi bi-bell-fill"></i>
+
+    <i class="bi bi-gear-fill ml-a"></i>
+
+    <i id="log-out" class="bi bi-box-arrow-right"></i>
+  </div>
+
+  <div class="user-preview">
+    <img src="" width="64" height="64">
+
+    <div class="user-name">
+      Jenny Wilson
+    </div>
+
+    <div class="user-info">
+      Traffic & Brand Manager
+    </div>
+  </div>
+
+  <div class="admin-panel">
+    <div class="title admin-panel-header">
+      Admin Panel
+    </div>
+
+    <div
+      class="assigned-projects field field-sm-shadow"
+      (click)="openAssignedProjectsModal()">
+
+      <div class="title">
+        <i class="bi bi-braces"></i>
+
+        Assigned projects
+      </div>
+
+      <div class="description">
+        Check all projects assigned to you
+      </div>
+    </div>
+
+    <div
+      class="assigned-tasks field field-sm-shadow"
+      (click)="openAssignedTasksModal()">
+
+      <div class="title">
+        <i class="bi bi-list-task"></i>
+
+        Assigned tasks
+      </div>
+
+      <div class="description">
+        Check all assgined tasks to you
+      </div>
+    </div>
+
+    <div
+      class="corporate Structure field field-sm-shadow"
+      (click)=" openCorporateStructuresModal()">
+
+      <div class="title">
+        <i class="bi bi-people-fill"></i>
+
+        Corporate structure
+      </div>
+
+      <div class="description">
+        Check your corporate structure
+      </div>
+    </div>
+  </div>
+</div>

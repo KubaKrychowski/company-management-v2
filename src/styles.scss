@@ -1,1 +1,30 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+
+body {
+  margin: 0 0 0;
+}
+
+.description {
+  margin-top: 2%;
+}
+
+.title {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.mt-2{
+  margin-top: 2%;
+}
+
+.ml-2{
+  margin-left: 2%;
+}
+
+.mtl-2{
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="header">
+    Assigned Tasks
+  </div>
+  <div class="content">
+    <label for="selectTask" class="select-label">
+      Select Task:
+    </label>
+
+    <select
+    id="selectTask"
+    [(ngModel)]="selectedTask"
+    class="form-control">
+      <option
+        disabled selected value>
+          -- select task --
+      </option>
+
+      <option  *ngFor="let task of tasks;index as taskIndex" [ngValue]="task">
+        {{task.title}}
+      </option>
+    </select>
+
+    <div *ngIf="selectedTask">
+      <hr>
+
+      <div class="title mt-2">
+        <div style="display: inline-block;" *ngIf="selectedTask.isImportant">
+          <i style="color: red;" class="bi bi-exclamation-octagon-fill"></i>
+
+          <span style="color: rgb(184, 33, 33);">
+            important
+          </span>
+        </div>
+
+        <p class="mt-2">
+          {{selectedTask.title}}
+        </p>
+      </div>
+
+      <div class="description">
+        {{selectedTask.description}}
+      </div>
+
+      <button class="btn btn-primary mt-2">
+        See more details
+      </button>
+
+      <button class="btn btn-success mtl-2">
+        archive as done
+      </button>
+
+      <button (click)="deleteTask()" class="btn btn-danger mtl-2">
+        delete task
+      </button>
+    </div>
+  </div>
+
+</div>

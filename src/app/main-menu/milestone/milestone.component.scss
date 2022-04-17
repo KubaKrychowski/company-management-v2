@@ -1,0 +1,29 @@
+.milestone {
+  margin-bottom: 2%;
+  display: flex;
+  padding: 2%;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 2%;
+  border-radius: 0.5em;
+  background-color: rgba(222, 222, 222, 0.33);
+}
+
+.milestone:hover {
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+}
+
+.field-sm-shadow {
+  -webkit-box-shadow: 8px 8px 22px -10px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 8px 8px 22px -10px rgba(66, 68, 90, 1);
+  box-shadow: 8px 8px 22px -10px rgba(66, 68, 90, 1);
+}
+
+.milestone-title {
+  font-weight: 600;
+}
+
+.milestone-description {
+  font-size: 0.8em;
+}

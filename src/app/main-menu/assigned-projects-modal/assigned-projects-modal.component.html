@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="header">
+    Assigned Projects
+  </div>
+  <div class="content">
+    <label for="selectProject" class="select-label">
+      Select Project:
+    </label>
+
+    <select
+    [(ngModel)]="selectedProject"
+    class="form-control">
+      <option
+        disabled selected value>
+          -- select project --
+      </option>
+
+      <option  *ngFor="let project of projects" [ngValue]="project">
+        {{project.title}}
+      </option>
+    </select>
+
+    <div *ngIf="selectedProject">
+      <hr>
+
+      <div class="title mt-2">
+        <div style="display: inline-block;" *ngIf="selectedProject.isImportant">
+          <i style="color: red;" class="bi bi-exclamation-octagon-fill"></i>
+
+          <span style="color: rgb(184, 33, 33);">
+            important
+          </span>
+        </div>
+
+        <p class="mt-2">
+          {{selectedProject.title}}
+        </p>
+      </div>
+
+      <div class="description">
+        {{selectedProject.description}}
+      </div>
+
+      <button class="btn btn-primary mt-2">
+        See more details
+      </button>
+
+      <button class="btn btn-danger mtl-2">
+        Send request to resign
+      </button>
+    </div>
+  </div>
+
+</div>

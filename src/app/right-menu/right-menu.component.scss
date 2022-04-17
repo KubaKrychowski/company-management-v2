@@ -1,0 +1,61 @@
+.container {
+  padding: 5%;
+
+}
+
+.top-panel {
+  display: flex;
+  flex-direction: row;
+  column-gap: 5%;
+}
+
+.ml-a {
+  margin-left: auto;
+}
+
+.user-preview{
+  margin-top: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.user-name{
+  margin-top: 5%;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+.user-info{
+  color: gray;
+}
+.admin-panel{
+  margin-top: 20%;
+  display: flex;
+  flex-direction: column;
+}
+.field{
+  display: flex;
+  padding: 3%;
+  flex-direction: column;
+  border-radius: 0.75em;
+  text-align: left;
+  background-color: azure;
+  margin-bottom: 5%;
+}
+
+.field:hover{
+  cursor: pointer;
+  background-color: rgba(205, 205, 205, 0.249);
+}
+
+.admin-panel-header{
+  margin-bottom: 5%;
+}
+.description{
+  font-size: 0.8em;
+}
+
+.field-sm-shadow {
+  -webkit-box-shadow: 8px 8px 22px -10px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 8px 8px 22px -10px rgba(66, 68, 90, 1);
+  box-shadow: 8px 8px 22px -10px rgba(66, 68, 90, 1);
+}

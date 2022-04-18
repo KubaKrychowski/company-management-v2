@@ -34,12 +34,16 @@ import {
   Tooltip,
   SubTitle
 } from 'chart.js';
+
 import { MilestoneComponent } from './main-menu/milestone/milestone.component';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AssignedProjectsModalComponent } from './main-menu/assigned-projects-modal/assigned-projects-modal.component';
 import { AssignedTasksModalComponent } from './main-menu/assigned-tasks-modal/assigned-tasks-modal.component';
 import { CorporateStructureModalComponent } from './main-menu/corporate-structure-modal/corporate-structure-modal.component';
 import { MonthlyMilestonesModalComponent } from './main-menu/monthly-milestones-modal/monthly-milestones-modal.component';
+
+
+import { AuthModule } from '@auth0/auth0-angular';
 
 Chart.register(
   ArcElement,
@@ -84,7 +88,11 @@ Chart.register(
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule 
+    FormsModule,
+    AuthModule.forRoot({
+      domain: 'dev-npnxfodq.us.auth0.com',
+      clientId: 'Zjy74gLsejhHiOqqyD0nYk2viZnPnDkR'
+    }),
 
   ],
   providers: [NgbActiveModal],

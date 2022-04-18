@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Chart } from 'chart.js';
 import { FinanceService } from '../services/finance.service';
+import { AuthService } from '@auth0/auth0-angular';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-main-menu',
@@ -10,7 +12,8 @@ import { FinanceService } from '../services/finance.service';
 
 export class MainMenuComponent implements OnInit {
   balance: number = 0;
-  constructor(private financeService: FinanceService) {
+  constructor(@Inject(DOCUMENT) public document: Document, private financeService: FinanceService, public auth: AuthService) {
+
     this.balance = this.financeService.calculateTotalBalance();
   }
 

@@ -1,4 +1,6 @@
 <div class="container">
+  <button type="button" class="btn-close close-btn" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+
   <div class="header">
     Assigned Projects
   </div>
@@ -41,13 +43,39 @@
         {{selectedProject.description}}
       </div>
 
-      <button class="btn btn-primary mt-2">
-        See more details
-      </button>
+      <div class="details" *ngIf="isMoreDetailsOpened">
+        <div class="title mt-4">
+          Details
+        </div>
 
-      <button class="btn btn-danger mtl-2">
-        Send request to resign
-      </button>
+        <hr>
+
+        <div class="Start date">
+            Start Date: 05/10/2002
+            <!-- TODO: INSERT DATE OBJECT HERE  -->
+        </div>
+
+        <div class="members">
+          Current Members: 10
+
+          <button class="btn btn-primary">
+            Show Members List
+          </button>
+        </div>
+      </div>
+      <!-- TODO: CHANGE VARIABLE NAME FOR TOGGLE MORE DETAILS -->
+      <div class="controls mt-4">
+        <hr>
+
+        <button class="btn btn-primary mt-2" (click)="isMoreDetailsOpened = !isMoreDetailsOpened">
+          See more details
+        </button>
+
+        <button class="btn btn-danger mtl-2">
+          Send request to resign
+        </button>
+      </div>
+
     </div>
   </div>
 

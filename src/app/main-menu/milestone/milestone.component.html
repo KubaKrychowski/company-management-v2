@@ -1,4 +1,7 @@
-<div class="milestone field-sm-shadow" *ngFor="let milestone of milestonesService.milestones">
+<div
+ (click)="openMilestoneDetailsModal(milestone)"
+ class="milestone field-sm-shadow"
+ *ngFor="let milestone of milestonesService.milestones">
   <i *ngIf="!milestone.isCompleted" style="color: red" class="bi bi-circle"></i>
 
   <i *ngIf="milestone.isCompleted" style="color: green" class="bi bi-circle-fill"></i>

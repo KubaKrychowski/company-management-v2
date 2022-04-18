@@ -39,6 +39,7 @@ import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AssignedProjectsModalComponent } from './main-menu/assigned-projects-modal/assigned-projects-modal.component';
 import { AssignedTasksModalComponent } from './main-menu/assigned-tasks-modal/assigned-tasks-modal.component';
 import { CorporateStructureModalComponent } from './main-menu/corporate-structure-modal/corporate-structure-modal.component';
+import { MonthlyMilestonesModalComponent } from './main-menu/monthly-milestones-modal/monthly-milestones-modal.component';
 
 Chart.register(
   ArcElement,
@@ -77,6 +78,7 @@ Chart.register(
     AssignedProjectsModalComponent,
     AssignedTasksModalComponent,
     CorporateStructureModalComponent,
+    MonthlyMilestonesModalComponent,
   ],
   imports: [
     BrowserModule,

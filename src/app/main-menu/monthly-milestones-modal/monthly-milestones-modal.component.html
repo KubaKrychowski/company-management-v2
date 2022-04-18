@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="title">
+    {{milestone.title}}
+  </div>
+
+  <div class="description">
+    {{milestone.description}}
+  </div>
+
+  <div *ngIf="milestone.isCompleted" class="isCompleted">
+    milestone is already completed
+  </div>
+
+  <div *ngIf="!milestone.isCompleted">
+    Progress: {{milestone.progressPercentage | percent}}
+
+    <progress
+      id="file"
+      style="width: 30%; margin-left: auto;"
+      value="{{milestone.progressPercentage * 100}}"
+      max="100">
+        {{milestone.progressPercentage }}
+    </progress>
+  </div>
+
+  <div class="controls">
+    <button class="btn btn-danger mt-2">
+      Delete Milestone
+    </button>
+  </div>
+</div>

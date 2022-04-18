@@ -4,6 +4,66 @@
   </div>
 
   <div class="content">
-    <div class="employee" *ngFor="let employee of employees"></div>
+    <label for="employee-name">
+      Search for employee by name:
+    </label>
+
+    <input
+    id="employee-name"
+    class="form-control mt-2"
+    [(ngModel)]="name">
+
+    <button (click)="lookForEmployee()" class="btn btn-primary mt-2">
+      Filter
+    </button>
+
+    <button
+      (click)="showAllEmployees = !showAllEmployees"
+      class="btn btn-primary mtl-2">
+        Show all employees
+    </button>
+
+    <div class="employees" *ngIf="showAllEmployees">
+      <div class="employee mt-2" (click)="showEmployeeDetails = !showEmployeeDetails" *ngFor="let employee of employees">
+        <div class="employee-name">
+          {{employee.name}}
+        </div>
+
+        <div class="employee-surname ml-2">
+          {{employee.surname}}
+        </div>
+
+        <div class="employee-position">
+          {{employee.position}}
+        </div>
+
+        <div class="employee-salary">
+          {{employee.salary | currency}}
+        </div>
+
+        <div class="employee-details" *ngIf="showEmployeeDetails">
+          SOME DETAILS
+        </div>
+      </div>
+    </div>
+
+    <div class="employee mt-2" *ngIf="foundEmployee">
+      <div class="employee-name">
+        {{foundEmployee.name}}
+      </div>
+
+      <div class="employee-surname">
+        {{foundEmployee.surname}}
+      </div>
+
+      <div class="employee-position">
+        {{foundEmployee.position}}
+      </div>
+
+      <div class="employee-salary">
+        {{foundEmployee.salary | currency}}
+      </div>
+
+    </div>
   </div>
 </div>

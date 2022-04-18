@@ -11,9 +11,12 @@ export class MilestonesService {
       title: '12 000 tasks',
       description: 'how many tasks to complete',
       isCompleted: false,
-      progressPercentage: 40,
+      progressPercentage: 0.4,
     },
   ];
+
+  currentlyOpenedMilestone: Milestone | null = null;
+
   constructor() { }
 
   createNewMileStone(milestone: Milestone) {

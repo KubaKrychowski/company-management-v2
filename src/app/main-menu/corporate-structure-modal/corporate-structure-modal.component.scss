@@ -1,10 +1,33 @@
-.container{
+.container {
   padding: 5%;
 }
-.header{
+
+.header {
   font-size: 1.2em;
   font-weight: 600;
 }
-.content{
+
+.content {
   margin-top: 5%;
+}
+
+.employee{
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+  border: 1px solid rgb(181, 181, 181);
+  border-radius: 0.5em;
+}
+
+.employee:hover{
+  cursor: pointer;
+  background-color: rgba(245, 245, 245, 0.575);
+}
+.employee-position{
+  margin-left: auto;
+}
+
+.employee-salary{
+  margin-left: auto;
+  color: rgb(36, 118, 36);
 }

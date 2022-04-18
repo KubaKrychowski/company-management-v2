@@ -1,5 +1,7 @@
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Project } from './../../shared/project.model';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-assigned-projects-modal',
@@ -7,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./assigned-projects-modal.component.scss']
 })
 export class AssignedProjectsModalComponent implements OnInit {
+
+  isMoreDetailsOpened: boolean = false;
 
   projects: Project[] = [
     {
@@ -24,7 +28,7 @@ export class AssignedProjectsModalComponent implements OnInit {
 
   selectedProject: Project | null = null;
 
-  constructor() { }
+  constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {
   }

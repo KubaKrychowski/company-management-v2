@@ -19,16 +19,13 @@ export class RightMenuComponent implements OnInit {
 
   openAssignedProjectsModal() {
     const modalRef = this.modalService.open(AssignedProjectsModalComponent);
-    modalRef.componentInstance.name = 'World';
   }
 
   openAssignedTasksModal() {
     const modalRef = this.modalService.open(AssignedTasksModalComponent);
-    modalRef.componentInstance.name = 'World';
   }
 
   openCorporateStructuresModal() {
     const modalRef = this.modalService.open(CorporateStructureModalComponent);
-    modalRef.componentInstance.name = 'World';
   }
 }

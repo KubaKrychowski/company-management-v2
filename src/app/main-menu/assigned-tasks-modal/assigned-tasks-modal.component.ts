@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { UserService } from './../../services/user.service';
+import { Component, OnInit } from '@angular/core';
 import { Task } from 'src/app/shared/task.model';
 @Component({
   selector: 'app-assigned-tasks-modal',

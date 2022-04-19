@@ -17,10 +17,6 @@ export class HomeComponent implements OnInit {
     this.firebaseService.createUserData();
   }
 
-  getProjects() {
-    this.usersService.getProject();
-  }
-
   getUser() {
     this.usersService.getUser();
   }

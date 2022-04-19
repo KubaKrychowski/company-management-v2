@@ -1,6 +1,8 @@
+import { LocalStorageService } from './../../services/local-storage.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Project } from './../../shared/project.model';
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-assigned-projects-modal',
@@ -11,27 +13,26 @@ export class AssignedProjectsModalComponent implements OnInit {
 
   isMoreDetailsOpened: boolean = false;
 
-  projects: Project[] = [
-    {
-      title: '1st project',
-      description: 'Marketing Simulator',
-      isImportant: false,
-      usersIDs: []
-    },
-
-    {
-      title: '2nd project',
-      description: 'Company Management application',
-      isImportant: true,
-      usersIDs: []
-    },
-  ]
+  projects: Project[] = []
 
   selectedProject: Project | null = null;
 
-  constructor(public activeModal: NgbActiveModal) { }
+  constructor(
+    public activeModal: NgbActiveModal,
+    private userService: UserService,
+    private localStorageService: LocalStorageService) { }
+// TODO: CHANGE ASSIGN PROJECTS SYSTEM
+  ngOnInit(): void {
+    if (this.userService.UserProjectsIds) {
+      const projectIds = this.localStorageService.getUsersProjectsIds();
 
-  ngOnInit(): void { }
-
-
+      if (projectIds) {
+        const projectsIds: String[] = projectIds;
+        for (let projectIdIndex = 0; projectIdIndex < projectsIds.length; projectIdIndex++) {
+          this.userService.getProject(projectsIds[projectIdIndex]);
+          this.projects = this.userService.projects;
+        }
+      }
+    }
+  }
 }

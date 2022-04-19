@@ -70,7 +70,7 @@ export class FirebaseService {
       ));
   }
 
-  getProjects(projectId: String) {
+  getProject(projectId: String) {
 
     let searchParams = new HttpParams();
     searchParams = searchParams.append('orderBy', '"$key"');

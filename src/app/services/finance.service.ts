@@ -2,9 +2,6 @@ import { transaction } from './../shared/transaction.model';
 import { Injectable } from '@angular/core';
 import { v4 } from 'uuid';
 
-
-
-
 @Injectable({
   providedIn: 'root'
 })

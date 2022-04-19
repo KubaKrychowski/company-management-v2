@@ -42,9 +42,7 @@ import {
   Legend,
   Title,
   Tooltip,
-  SubTitle
 } from 'chart.js';
-
 
 Chart.register(
   ArcElement,
@@ -86,6 +84,7 @@ Chart.register(
     AuthButtonComponent,
     HomeComponent,
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -96,8 +95,8 @@ Chart.register(
       domain: 'dev-npnxfodq.us.auth0.com',
       clientId: 'Zjy74gLsejhHiOqqyD0nYk2viZnPnDkR'
     }),
-
   ],
+
   providers: [NgbActiveModal],
   bootstrap: [AppComponent]
 })

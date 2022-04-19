@@ -9,9 +9,8 @@ export class ChartsService {
   ctx1!: HTMLCanvasElement;
   ctx2!: HTMLCanvasElement;
   ctx3!: HTMLCanvasElement;
+
   constructor() {
-
-
     const myChart = new Chart(this.ctx1, {
       type: 'bar',
       data: {
@@ -31,7 +30,7 @@ export class ChartsService {
 
         datasets: [{
           label: 'Income in USD',
-          data: [12, 19, 3, 5, 2, 3,12, 19, 3, 5, 2, 3],
+          data: [12, 19, 3, 5, 2, 3, 12, 19, 3, 5, 2, 3],
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',

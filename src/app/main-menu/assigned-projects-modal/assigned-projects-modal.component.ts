@@ -2,7 +2,6 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Project } from './../../shared/project.model';
 import { Component, OnInit } from '@angular/core';
 
-
 @Component({
   selector: 'app-assigned-projects-modal',
   templateUrl: './assigned-projects-modal.component.html',
@@ -32,8 +31,7 @@ export class AssignedProjectsModalComponent implements OnInit {
 
   constructor(public activeModal: NgbActiveModal) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 
 }

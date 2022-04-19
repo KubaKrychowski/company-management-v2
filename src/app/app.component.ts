@@ -10,5 +10,4 @@ export class AppComponent {
   title = 'company-management-v2';
 
   constructor(public auth: AuthService) { }
-
 }

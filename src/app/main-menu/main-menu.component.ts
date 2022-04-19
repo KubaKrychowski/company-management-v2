@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { FinanceService } from '../services/finance.service';
 
-
 @Component({
   selector: 'app-main-menu',
   templateUrl: './main-menu.component.html',
@@ -11,19 +10,16 @@ import { FinanceService } from '../services/finance.service';
 
 export class MainMenuComponent implements OnInit {
   balance: number = 0;
-  constructor(
-    private financeService: FinanceService,
-    ) {
-
+  constructor(private financeService: FinanceService) {
     this.balance = this.financeService.calculateTotalBalance();
   }
 
   ngOnInit(): void {
 
-
     const ctx = document.getElementById('myChart') as HTMLCanvasElement;
     const ctx2 = document.getElementById('myChart2') as HTMLCanvasElement;
     const ctx3 = document.getElementById('myChart3') as HTMLCanvasElement;
+
     const myChart = new Chart(ctx, {
       type: 'bar',
       data: {

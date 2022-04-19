@@ -17,12 +17,14 @@ export class AssignedProjectsModalComponent implements OnInit {
       title: '1st project',
       description: 'Marketing Simulator',
       isImportant: false,
+      usersIDs: []
     },
 
     {
       title: '2nd project',
       description: 'Company Management application',
       isImportant: true,
+      usersIDs: []
     },
   ]
 

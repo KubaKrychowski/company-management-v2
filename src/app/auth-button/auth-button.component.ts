@@ -4,6 +4,7 @@ import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-auth-button',
+
   template: `
     <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
       <i
@@ -19,11 +20,13 @@ import { DOCUMENT } from '@angular/common';
       </i>
     </ng-template>
   `,
+
   styles: [
     '.log-button { padding: 0 0.25em; border-radius: 0.5em;}',
     '.log-button:hover { cursor: pointer; background-color: rgba(120, 201, 230, 0.36); }'
   ],
 })
+
 export class AuthButtonComponent {
   constructor(@Inject(DOCUMENT) public document: Document, public auth: AuthService) { }
 }

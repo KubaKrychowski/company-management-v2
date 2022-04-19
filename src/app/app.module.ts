@@ -13,6 +13,9 @@ import { AssignedTasksModalComponent } from './main-menu/assigned-tasks-modal/as
 import { CorporateStructureModalComponent } from './main-menu/corporate-structure-modal/corporate-structure-modal.component';
 import { MonthlyMilestonesModalComponent } from './main-menu/monthly-milestones-modal/monthly-milestones-modal.component';
 import { AuthModule } from '@auth0/auth0-angular';
+import { AuthButtonComponent } from './auth-button/auth-button.component';
+import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 import {
   Chart,
@@ -41,8 +44,7 @@ import {
   Tooltip,
   SubTitle
 } from 'chart.js';
-import { AuthButtonComponent } from './auth-button/auth-button.component';
-import { HomeComponent } from './home/home.component';
+
 
 Chart.register(
   ArcElement,
@@ -89,6 +91,7 @@ Chart.register(
     AppRoutingModule,
     NgbModule,
     FormsModule,
+    HttpClientModule,
     AuthModule.forRoot({
       domain: 'dev-npnxfodq.us.auth0.com',
       clientId: 'Zjy74gLsejhHiOqqyD0nYk2viZnPnDkR'

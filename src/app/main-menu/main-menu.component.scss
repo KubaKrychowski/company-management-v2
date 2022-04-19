@@ -1,5 +1,25 @@
 $window-width: 16%;
 
+.container-fluid{
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+  .left-menu{
+    width: 15%;
+  }
+
+  .main-menu{
+    background-color: rgba(219, 219, 219, 0.471);
+    padding: 1em;
+    width: 70%;
+  }
+
+  .right-menu{
+    background-color: rgba(186, 219, 253, 0.596);
+    width: 15%;
+  }
+
 .field-shadow {
   -webkit-box-shadow: 8px 8px 7px -3px rgba(66, 68, 90, 1);
   -moz-box-shadow: 8px 8px 7px -3px rgba(66, 68, 90, 1);

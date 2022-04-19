@@ -1,8 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { FinanceService } from '../services/finance.service';
-import { AuthService } from '@auth0/auth0-angular';
-import { DOCUMENT } from '@angular/common';
+
 
 @Component({
   selector: 'app-main-menu',
@@ -12,12 +11,16 @@ import { DOCUMENT } from '@angular/common';
 
 export class MainMenuComponent implements OnInit {
   balance: number = 0;
-  constructor(@Inject(DOCUMENT) public document: Document, private financeService: FinanceService, public auth: AuthService) {
+  constructor(
+    private financeService: FinanceService,
+    ) {
 
     this.balance = this.financeService.calculateTotalBalance();
   }
 
   ngOnInit(): void {
+
+
     const ctx = document.getElementById('myChart') as HTMLCanvasElement;
     const ctx2 = document.getElementById('myChart2') as HTMLCanvasElement;
     const ctx3 = document.getElementById('myChart3') as HTMLCanvasElement;

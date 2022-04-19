@@ -14,14 +14,14 @@
 
     <i class="bi bi-gear-fill ml-a"></i>
 
-    <i class="bi bi-box-arrow-right log-out"></i>
+    <app-auth-button></app-auth-button>
   </div>
 
-  <div class="user-preview">
-    <img src="" width="64" height="64">
+  <div class="user-preview" *ngIf="user">
+    <img src="{{user.picture}}" width="64" height="64">
 
     <div class="user-name">
-      Jenny Wilson
+     <span *ngIf="user">{{user.name}}</span>
     </div>
 
     <div class="user-info">

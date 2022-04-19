@@ -6,6 +6,13 @@ import { AppComponent } from './app.component';
 import { LeftMenuComponent } from './left-menu/left-menu.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { RightMenuComponent } from './right-menu/right-menu.component';
+import { MilestoneComponent } from './main-menu/milestone/milestone.component';
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { AssignedProjectsModalComponent } from './main-menu/assigned-projects-modal/assigned-projects-modal.component';
+import { AssignedTasksModalComponent } from './main-menu/assigned-tasks-modal/assigned-tasks-modal.component';
+import { CorporateStructureModalComponent } from './main-menu/corporate-structure-modal/corporate-structure-modal.component';
+import { MonthlyMilestonesModalComponent } from './main-menu/monthly-milestones-modal/monthly-milestones-modal.component';
+import { AuthModule } from '@auth0/auth0-angular';
 
 import {
   Chart,
@@ -34,16 +41,8 @@ import {
   Tooltip,
   SubTitle
 } from 'chart.js';
-
-import { MilestoneComponent } from './main-menu/milestone/milestone.component';
-import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { AssignedProjectsModalComponent } from './main-menu/assigned-projects-modal/assigned-projects-modal.component';
-import { AssignedTasksModalComponent } from './main-menu/assigned-tasks-modal/assigned-tasks-modal.component';
-import { CorporateStructureModalComponent } from './main-menu/corporate-structure-modal/corporate-structure-modal.component';
-import { MonthlyMilestonesModalComponent } from './main-menu/monthly-milestones-modal/monthly-milestones-modal.component';
-
-
-import { AuthModule } from '@auth0/auth0-angular';
+import { AuthButtonComponent } from './auth-button/auth-button.component';
+import { HomeComponent } from './home/home.component';
 
 Chart.register(
   ArcElement,
@@ -69,7 +68,6 @@ Chart.register(
   Legend,
   Title,
   Tooltip,
-
 );
 
 @NgModule({
@@ -83,6 +81,8 @@ Chart.register(
     AssignedTasksModalComponent,
     CorporateStructureModalComponent,
     MonthlyMilestonesModalComponent,
+    AuthButtonComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,4 +98,5 @@ Chart.register(
   providers: [NgbActiveModal],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

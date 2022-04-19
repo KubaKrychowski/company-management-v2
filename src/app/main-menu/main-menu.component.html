@@ -1,115 +1,114 @@
-<div class="container">
-  <div class="header">
-    <div class="page-title ">
-      <button class="btn btn-primary" (click)="auth.loginWithRedirect()">
-        Log in
-      </button>
+<div class="container-fluid">
+  <div class="left-menu">
+    <app-left-menu></app-left-menu>
+  </div>
+  <div class="main-menu">
+    <div class="header">
+      <div class="page-title ">
+        Overview
+      </div>
+      <!-- TODO: Change classes name -->
+        <div class="current-date">
+          Wednesday, June 10, 2020
+        </div>
 
-      <ng-container *ngIf="auth.isAuthenticated$ | async;">
-        <button class="btn btn-primary ml-2" (click)="auth.logout({ returnTo: document.location.origin })">
-          Log out
-        </button>
-      </ng-container>
-
-      Overview
+        <div class="search-bar">
+          <i class="bi bi-search"></i>
+        </div>
     </div>
-    <!-- TODO: Change classes name -->
-      <div class="current-date">
-        Wednesday, June 10, 2020
+
+    <div class="content">
+      <div class="summary-windows">
+        <div class="revenue field-shadow">
+          <div class="value">
+            38.7k
+          </div>
+
+          <div class="description">
+            Revenue this month
+          </div>
+        </div>
+
+        <div class="project-income  field-shadow">
+          <div class="value">
+            {{balance | currency:'USD'}}
+          </div>
+
+          <div class="description">
+            Projects income
+          </div>
+        </div>
+        <div class="quotes  field-shadow">
+          <div class="value">
+            56.3k
+          </div>
+
+          <div class="description">
+            Qutoed this month
+          </div>
+        </div>
+        <div class="outstanding-invoces field-shadow">
+          <div class="value">
+            2 114
+          </div>
+
+          <div class="description">
+            Outstanding invoces
+          </div>
+        </div>
       </div>
 
-      <div class="search-bar">
-        <i class="bi bi-search"></i>
+      <div class="summary-chart-milestones">
+        <div class="expenses-chart  field-shadow">
+          <div class="title">
+            Planned and Actual Expenses
+          </div>
+
+          <div class="chart">
+
+            <canvas id="myChart" width="400" height="200"></canvas>
+
+
+          </div>
+        </div>
+
+        <div class="monthly-milestones  field-shadow">
+          <div class="title">
+            monthly milestones
+          </div>
+
+          <div class="milestones">
+            <app-milestone></app-milestone>
+          </div>
+        </div>
       </div>
+
+      <div class="analytics">
+        <div class="anual-leads field-shadow">
+          <div class="title">
+            Anual Leads Dynamic
+          </div>
+
+          <div class="chart">
+            <canvas id="myChart2" width="400" height="100"></canvas>
+          </div>
+        </div>
+
+        <div class="weakly-osi field-shadow">
+          <div class="title">
+            Weakly OSI Dynamic
+          </div>
+
+          <div class="chart">
+            <canvas id="myChart3" width="100" height="100"></canvas>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="content">
-    <div class="summary-windows">
-      <div class="revenue field-shadow">
-        <div class="value">
-          38.7k
-        </div>
-
-        <div class="description">
-          Revenue this month
-        </div>
-      </div>
-
-      <div class="project-income  field-shadow">
-        <div class="value">
-          {{balance | currency:'USD'}}
-        </div>
-
-        <div class="description">
-          Projects income
-        </div>
-      </div>
-      <div class="quotes  field-shadow">
-        <div class="value">
-          56.3k
-        </div>
-
-        <div class="description">
-          Qutoed this month
-        </div>
-      </div>
-      <div class="outstanding-invoces field-shadow">
-        <div class="value">
-          2 114
-        </div>
-
-        <div class="description">
-          Outstanding invoces
-        </div>
-      </div>
-    </div>
-
-    <div class="summary-chart-milestones">
-      <div class="expenses-chart  field-shadow">
-        <div class="title">
-          Planned and Actual Expenses
-        </div>
-
-        <div class="chart">
-
-          <canvas id="myChart" width="400" height="200"></canvas>
-
-
-        </div>
-      </div>
-
-      <div class="monthly-milestones  field-shadow">
-        <div class="title">
-          monthly milestones
-        </div>
-
-        <div class="milestones">
-          <app-milestone></app-milestone>
-        </div>
-      </div>
-    </div>
-
-    <div class="analytics">
-      <div class="anual-leads field-shadow">
-        <div class="title">
-          Anual Leads Dynamic
-        </div>
-
-        <div class="chart">
-          <canvas id="myChart2" width="400" height="100"></canvas>
-        </div>
-      </div>
-
-      <div class="weakly-osi field-shadow">
-        <div class="title">
-          Weakly OSI Dynamic
-        </div>
-
-        <div class="chart">
-          <canvas id="myChart3" width="100" height="100"></canvas>
-        </div>
-
-      </div>
-    </div>
+  <div class="right-menu">
+    <app-right-menu></app-right-menu>
   </div>
 </div>

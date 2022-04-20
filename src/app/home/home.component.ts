@@ -28,4 +28,8 @@ export class HomeComponent implements OnInit {
   createTask() {
     this.firebaseService.createTask();
   }
+
+  getProjects() {
+    this.usersService.getUserProject('-N01PELJWA0sXci1EHOA');
+  }
 }

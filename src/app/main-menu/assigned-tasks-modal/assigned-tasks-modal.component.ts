@@ -1,4 +1,3 @@
-import { LocalStorageService } from './../../services/local-storage.service';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Task } from 'src/app/shared/task.model';
@@ -11,22 +10,25 @@ export class AssignedTasksModalComponent implements OnInit{
 
   tasks: Task[] = [];
 
+  tasksIds : String[] | null = null;
   selectedTask: Task | null = null;
 
-  constructor(private userService: UserService,private localStorageService: LocalStorageService) { }
+  constructor(private userService: UserService) {
+      if (!this.tasksIds) {
+        this.tasksIds = this.userService.UserTasksIds;
+      }
+     }
 
   ngOnInit(): void {
-    if (this.userService.UserProjectsIds) {
-      const taskIds = this.localStorageService.getUsersTasksIds();
+    if (this.tasksIds) {
+      for (let taskIdIndex = 0; taskIdIndex < this.tasksIds.length; taskIdIndex++) {
+        const taskID = this.tasksIds[taskIdIndex];
 
-      if (taskIds) {
-        const tasksIds: String[] = taskIds;
-        for (let taskIdIndex = 0; taskIdIndex < tasksIds.length; taskIdIndex++) {
-          // TODO: CHANGE IN 27th lane as string and solve problem with difference between String and string
-          this.userService.getTask(tasksIds[taskIdIndex] as string);
-          this.tasks = this.userService.tasks;
-        }
+        this.userService.getUserTask(taskID as string);
       }
+      this.tasks = this.userService.tasks;
+    } else {
+      console.log('User has no assigned tasks');
     }
   }
 

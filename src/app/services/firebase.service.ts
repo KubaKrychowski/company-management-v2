@@ -1,10 +1,11 @@
 import { Task } from 'src/app/shared/task.model';
 import { Project } from './../shared/project.model';
 import { User } from './../shared/user.model';
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 const FIREBASE_URL = 'https://company-management-v2-default-rtdb.europe-west1.firebasedatabase.app/';
 
@@ -13,6 +14,8 @@ const FIREBASE_URL = 'https://company-management-v2-default-rtdb.europe-west1.fi
 })
 export class FirebaseService {
 
+  projects: Project[] = [];
+  // !Testing Objects
   user: User = {
     Name: 'Kuba',
     Surname: 'Krychowski',
@@ -34,16 +37,8 @@ export class FirebaseService {
     isImportant: true,
     userId: 'zlfjkgzdlgnalg'
   };
-
+  //!
   constructor(private http: HttpClient) { }
-
-  createUserData() {
-    this.http
-      .post<[name: string]>(FIREBASE_URL + 'Users.json', this.user)
-      .subscribe(responeData =>
-        console.log(responeData)
-      );
-  }
 
   getUser(userEmail: string) {
 
@@ -83,6 +78,7 @@ export class FirebaseService {
   getProject(projectId: String) {
 
     let searchParams = new HttpParams();
+
     searchParams = searchParams.append('orderBy', '"$key"');
     searchParams = searchParams.append('equalTo', '"' + projectId + '"');
 
@@ -110,21 +106,10 @@ export class FirebaseService {
       );
   }
 
-  createProject() {
-    this.http.post<[name: string]>(FIREBASE_URL + 'projects.json', this.project).subscribe(
-      responseData => console.log(responseData)
-    );
-  }
-
-  createTask() {
-    this.http.post<[name: string]>(FIREBASE_URL + 'tasks.json', this.task).subscribe(
-      responseData => console.log(responseData)
-    );
-  }
-
   getTask(taskID: string) {
 
     let searchParams = new HttpParams();
+
     searchParams = searchParams.append('orderBy', '"$key"');
     searchParams = searchParams.append('equalTo', '"' + taskID + '"');
 
@@ -152,5 +137,23 @@ export class FirebaseService {
           return task;
         })
       );
+  }
+
+  createProject() {
+    this
+      .http
+      .post<[name: string]>(FIREBASE_URL + 'projects.json', this.project);
+  }
+
+  createTask() {
+    this
+      .http
+      .post<[name: string]>(FIREBASE_URL + 'tasks.json', this.task);
+  }
+
+  createUserData() {
+    this
+      .http
+      .post<[name: string]>(FIREBASE_URL + 'Users.json', this.user);
   }
 }

@@ -5,6 +5,7 @@ import { AssignedProjectsModalComponent } from './../main-menu/assigned-projects
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '@auth0/auth0-angular';
+import { UserSettingsModalComponent } from '../user-settings-modal/user-settings-modal.component';
 
 @Component({
   selector: 'app-right-menu',
@@ -40,5 +41,9 @@ export class RightMenuComponent implements OnInit {
 
   openCorporateStructuresModal() {
     const modalRef = this.modalService.open(CorporateStructureModalComponent);
+  }
+
+  openUserSettingsModal() {
+    const modalRef = this.modalService.open(UserSettingsModalComponent, { size: 'xl' });
   }
 }

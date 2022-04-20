@@ -1,0 +1,17 @@
+.container{
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.content{
+  display: flex;
+  flex-direction: row;
+  column-gap: 2%;
+}
+.preview{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 1%;
+}

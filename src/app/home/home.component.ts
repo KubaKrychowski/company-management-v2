@@ -1,5 +1,3 @@
-import { UserService } from './../services/user.service';
-import { FirebaseService } from './../services/firebase.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,27 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private usersService: UserService, private firebaseService: FirebaseService) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-  createTestUser() {
-    this.firebaseService.createUserData();
-  }
-
-  getUser() {
-    this.usersService.getUser();
-  }
-
-  createProject() {
-    this.firebaseService.createProject();
-  }
-
-  createTask() {
-    this.firebaseService.createTask();
-  }
-
-  getProjects() {
-    this.usersService.getUserProject('-N01PELJWA0sXci1EHOA');
   }
 }

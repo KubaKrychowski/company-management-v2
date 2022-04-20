@@ -15,29 +15,7 @@ const FIREBASE_URL = 'https://company-management-v2-default-rtdb.europe-west1.fi
 export class FirebaseService {
 
   projects: Project[] = [];
-  // !Testing Objects
-  user: User = {
-    Name: 'Kuba',
-    Surname: 'Krychowski',
-    email: 'kkrychowski@interia.pl',
-    projects: ['-N01PELJWA0sXci1EHOA'],
-    tasks: ['-N04HuafacV-fV714rCT']
-  };
 
-  project: Project = {
-    title: 'second project',
-    description: 'company simulator',
-    isImportant: false,
-    usersIDs: ['zlfjkgzdlgnalg',]
-  };
-
-  task: Task = {
-    title: 'Send CV',
-    description: 'Send Cv on noflufjobs,justjoin.it etc.',
-    isImportant: true,
-    userId: 'zlfjkgzdlgnalg'
-  };
-  //!
   constructor(private http: HttpClient) { }
 
   getUser(userEmail: string) {
@@ -137,23 +115,5 @@ export class FirebaseService {
           return task;
         })
       );
-  }
-
-  createProject() {
-    this
-      .http
-      .post<[name: string]>(FIREBASE_URL + 'projects.json', this.project);
-  }
-
-  createTask() {
-    this
-      .http
-      .post<[name: string]>(FIREBASE_URL + 'tasks.json', this.task);
-  }
-
-  createUserData() {
-    this
-      .http
-      .post<[name: string]>(FIREBASE_URL + 'Users.json', this.user);
   }
 }

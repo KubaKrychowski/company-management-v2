@@ -43,6 +43,7 @@ import {
   Title,
   Tooltip,
 } from 'chart.js';
+import { UserSettingsModalComponent } from './user-settings-modal/user-settings-modal.component';
 
 Chart.register(
   ArcElement,
@@ -83,6 +84,7 @@ Chart.register(
     MonthlyMilestonesModalComponent,
     AuthButtonComponent,
     HomeComponent,
+    UserSettingsModalComponent,
   ],
 
   imports: [

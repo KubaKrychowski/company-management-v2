@@ -28,7 +28,7 @@ export class AssignedTasksModalComponent implements OnInit{
       }
       this.tasks = this.userService.tasks;
     } else {
-      console.log('User has no assigned tasks');
+      console.warn('User has no assigned tasks');
     }
   }
 

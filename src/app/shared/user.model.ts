@@ -4,4 +4,5 @@ export interface User {
   email: string;
   Surname: string;
   projects: string[];
+  tasks: string[];
 }

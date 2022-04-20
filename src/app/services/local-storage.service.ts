@@ -23,7 +23,17 @@ export class LocalStorageService {
     } else {
       return null;
     }
+  }
 
+  getUsersTasksIds(): string[] | null {
+    const localStorageData = localStorage.getItem(LOCAL_STORAGE_USER_DATA_KEY)
+    if (localStorageData) {
+      const userData: User = JSON.parse(localStorageData);
+
+      return userData.tasks;
+    } else {
+      return null;
+    }
   }
 
 }

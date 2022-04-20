@@ -9,11 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private usersService: UserService,private firebaseService: FirebaseService) { }
+  constructor(private usersService: UserService, private firebaseService: FirebaseService) { }
 
   ngOnInit(): void {
   }
-  createTestUser(){
+  createTestUser() {
     this.firebaseService.createUserData();
   }
 
@@ -23,5 +23,9 @@ export class HomeComponent implements OnInit {
 
   createProject() {
     this.firebaseService.createProject();
+  }
+
+  createTask() {
+    this.firebaseService.createTask();
   }
 }

@@ -13,7 +13,7 @@ export class AssignedProjectsModalComponent implements OnInit {
 
   isMoreDetailsOpened: boolean = false;
 
-  projects: Project[] = []
+  projects: Project[] = [];
 
   selectedProject: Project | null = null;
 

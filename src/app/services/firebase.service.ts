@@ -36,6 +36,7 @@ export class FirebaseService {
         map(responseData => {
           let user: User = {
             Name: '',
+            Nickname: '',
             Surname: '',
             id: '',
             email: '',

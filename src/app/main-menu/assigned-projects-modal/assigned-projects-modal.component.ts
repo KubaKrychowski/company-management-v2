@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AssignedProjectsModalComponent implements OnInit {
 
-  isMoreDetailsOpened: boolean = false;
+  toggleMoreDetails: boolean = false;
 
   projects: Project[] | null = null;
   selectedProject: Project | null = null;

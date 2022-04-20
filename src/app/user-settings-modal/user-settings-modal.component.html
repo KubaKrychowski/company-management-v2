@@ -7,36 +7,71 @@
   <hr>
 
   <div class="content">
-    <div class="options">
+    <div class="warn" *ngIf="userDoesntExistInFirebase">
+      <i style="color: rgb(216, 182, 59)" class="bi bi-exclamation-triangle-fill"></i>
+      <span style="color:  rgb(216, 182, 59); font-weight: 600;">
+        We haven't got informations about you, please complete them to unlock all features
+      </span>
+    </div>
+
+    <div class="options mt-2">
       <button class="btn btn-primary">
         General
       </button>
     </div>
 
+    <div class="title mt-2">
+      User Profile
+
+      <hr>
+    </div>
+
     <div class="preview">
-      <label for="name">
-        Name:
-      </label>
+      <div class="edit-profile-form">
+        <div class="change-image-field mt-2">
+          <img src="{{imageURL}}" width="128" height="128" style="border-radius: 100%;">
 
-      <input [(ngModel)]="testingString" [disabled]="true" id="name" class="form-control">
+          <input [(ngModel)]="imageURL" class="form-control mt-2" type="text" placeholder="type image URL here:">
 
-      <label for="surname">
-        Surname:
-      </label>
+          <button style="margin-right: auto;" class="btn btn-success mt-2">
+            Save Image
+          </button>
+        </div>
 
-      <input [(ngModel)]="testingString" [disabled]="true" id="surname" class="form-control">
+        <div class="edit-form">
+          <label for="name">
+            Name:
+          </label>
 
-      <label for="nickname">
-        NickName:
-      </label>
+          <input [(ngModel)]="user.Name" [disabled]="true" id="name" class="form-control">
 
-      <input [(ngModel)]="testingString" [disabled]="true" id="nickname" class="form-control">
+          <label for="surname">
+            Surname:
+          </label>
 
-      <label for="email">
-        email:
-      </label>
+          <input [(ngModel)]="user.Surname" [disabled]="true" id="surname" class="form-control">
 
-      <input [(ngModel)]="testingString" [disabled]="true" id="email" class="form-control">
+          <label for="nickname">
+            NickName:
+          </label>
+
+          <input [(ngModel)]="user.Nickname" [disabled]="true" id="nickname" class="form-control">
+
+          <label for="email">
+            email:
+          </label>
+
+          <input [(ngModel)]="user.email" [disabled]="true" id="email" class="form-control">
+
+          <button class="btn btn-primary mt-2">
+            Save Changes
+          </button>
+        </div>
+
+
+
+      </div>
+
     </div>
   </div>
 </div>

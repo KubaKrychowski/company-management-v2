@@ -48,7 +48,7 @@
         {{selectedProject.description}}
       </div>
 
-      <div class="details" *ngIf="isMoreDetailsOpened">
+      <div class="details" *ngIf="toggleMoreDetails">
         <div class="title mt-4">
           Details
         </div>
@@ -68,11 +68,11 @@
           </button>
         </div>
       </div>
-      <!-- TODO: CHANGE VARIABLE NAME FOR TOGGLE MORE DETAILS -->
+
       <div class="controls mt-4">
         <hr>
 
-        <button class="btn btn-primary mt-2" (click)="isMoreDetailsOpened = !isMoreDetailsOpened">
+        <button class="btn btn-primary mt-2" (click)="toggleMoreDetails = !toggleMoreDetails">
           See more details
         </button>
 

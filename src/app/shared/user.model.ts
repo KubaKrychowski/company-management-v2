@@ -3,6 +3,7 @@ export interface User {
   Name: string;
   email: string;
   Surname: string;
+  Nickname: string;
   projects: string[];
   tasks: string[];
 }

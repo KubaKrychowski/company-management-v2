@@ -1,17 +1,42 @@
-.container{
+.container {
   padding: 1em;
   display: flex;
   flex-direction: column;
 }
 
-.content{
+.content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   column-gap: 2%;
 }
-.preview{
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  column-gap: 1%;
+}
+
+.edit-profile-form {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+}
+
+.change-image-field {
+  width: 30%;
+  padding: 0 1em;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  column-gap: 1%;
+
+}
+
+.edit-form {
+  background-color: rgba(193, 193, 193, 0.267);
+  padding: 1em 1em;
+  border-radius: 0.5em;
+  width: 60%;
+  -webkit-box-shadow: 8px 8px 22px -10px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 8px 8px 22px -10px rgba(66, 68, 90, 1);
+  box-shadow: 8px 8px 22px -10px rgba(66, 68, 90, 1);
 }

@@ -1,4 +1,4 @@
-import { AuthService } from '@auth0/auth0-angular';
+import { UserService } from 'src/app/services/user.service';
 import { User } from './../shared/user.model';
 import { FirebaseService } from './../services/firebase.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,51 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserSettingsModalComponent implements OnInit {
 
-  testingString: string = 'Test';
+  imageURL: string = '';
+  email: string = '';
+  userDoesntExistInFirebase: boolean = false;
 
   user: User = {
     Name: '',
     email: '',
     Nickname: '',
+    imageURL: '',
     Surname: '',
     projects: [],
     tasks: [],
   }
-  // ? WHY SUBSCRIPTION DOESNT WORK OUTSIDE OF FUNCTION
-  email: string = '';
-  imageURL: string = '';
-  userDoesntExistInFirebase: boolean = false;
 
-  constructor(private firebaseService: FirebaseService, private auth: AuthService) { }
+
+
+  constructor(private firebaseService: FirebaseService,public userService: UserService) { }
 
   ngOnInit(): void {
-
-    this
-      .auth
-      .user$
-      .subscribe(user => {
-        if (user && user.email && user.picture) {
-          this.email = user.email;
-          this.imageURL = user.picture;
-          console.log(this.email);
-          this.checkIfUserIsSavedInFirebase();
-        }
-      });
+    if(this.userService.userProfile){
+      this.user = this.userService.userProfile;
+    }
   }
+  // TODO: Change name of getUser method to getUserProfile
 
-  checkIfUserIsSavedInFirebase() {
-    this
-      .firebaseService
-      .getUser(this.email)
-      .subscribe(user => {
-        this.user = user;
 
-        if (!this.user.id) {
-          this.userDoesntExistInFirebase = true;
-        } else {
-          this.userDoesntExistInFirebase = false;
-        }
-      });
+  changeImage() {
+    this.user.imageURL = this.imageURL;
   }
-
 }

@@ -16,12 +16,21 @@
 
     <app-auth-button></app-auth-button>
   </div>
+  <!-- TODO: FIX ALIGN -->
+  <div *ngIf="!userService.userProfile && userService.userIsLoggedIn && !userService.userProfileDoesntExistInFirebase" class="spinner-border mt-2 ml-a" role="status"></div>
 
-  <div class="user-preview" *ngIf="user">
-    <img src="{{user.picture}}" width="64" height="64">
+  <div style="color: rgba(253, 173, 0, 0.966)"  *ngIf="userService.userProfileDoesntExistInFirebase && userService.userIsLoggedIn">
+    <i class="bi bi-exclamation-triangle-fill"></i> To unlock all features please create user profile
+  </div>
+
+  <div *ngIf="!userService.userIsLoggedIn">
+    <i style="color: red" class="bi bi-exclamation-triangle-fill"></i> You're not logged in
+  </div>
+  <div class="user-preview" *ngIf="userService.userProfile">
+    <img src="{{userService.userProfile.imageURL}}" width="64" height="64">
 
     <div class="user-name">
-     <span *ngIf="user">{{user.name}}</span>
+      {{userService.userProfile.Nickname}}
     </div>
 
     <div class="user-info">
@@ -34,9 +43,7 @@
       Admin Panel
     </div>
 
-    <div
-      class="assigned-projects field field-sm-shadow"
-      (click)="openAssignedProjectsModal()">
+    <div class="assigned-projects field field-sm-shadow" (click)="openAssignedProjectsModal()">
 
       <div class="title">
         <i class="bi bi-braces"></i>
@@ -49,9 +56,7 @@
       </div>
     </div>
 
-    <div
-      class="assigned-tasks field field-sm-shadow"
-      (click)="openAssignedTasksModal()">
+    <div class="assigned-tasks field field-sm-shadow" (click)="openAssignedTasksModal()">
 
       <div class="title">
         <i class="bi bi-list-task"></i>
@@ -64,9 +69,7 @@
       </div>
     </div>
 
-    <div
-      class="corporate Structure field field-sm-shadow"
-      (click)=" openCorporateStructuresModal()">
+    <div class="corporate Structure field field-sm-shadow" (click)=" openCorporateStructuresModal()">
 
       <div class="title">
         <i class="bi bi-people-fill"></i>

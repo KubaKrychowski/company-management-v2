@@ -6,11 +6,10 @@
   <hr>
 
   <div class="content">
-    <div class="warn" *ngIf="userDoesntExistInFirebase">
-      <i style="color: rgb(216, 182, 59)" class="bi bi-exclamation-triangle-fill"></i>
-      <span style="color:  rgb(216, 182, 59); font-weight: 600;">
-        We haven't got informations about you, please complete them to unlock all features
-      </span>
+    <div class="warn" *ngIf="userService.userProfileDoesntExistInFirebase && userService.userIsLoggedIn">
+      <i class="bi bi-exclamation-triangle-fill"></i>
+
+      To unlock all features please create user profile
     </div>
 
     <div class="options mt-2">
@@ -28,11 +27,11 @@
     <div class="preview">
       <div class="edit-profile-form">
         <div class="change-image-field mt-2">
-          <img src="{{imageURL}}" width="128" height="128" style="border-radius: 100%;">
+          <img src="{{user.imageURL}}" width="128" height="128" style="border-radius: 100%;">
 
           <input [(ngModel)]="imageURL" class="form-control mt-2" type="text" placeholder="type image URL here:">
 
-          <button style="margin-right: auto;" class="btn btn-success mt-2">
+          <button (click)="changeImage()" style="margin-right: auto;" class="btn btn-success mt-2">
             Save Image
           </button>
         </div>

@@ -1,3 +1,4 @@
+import { AuthService } from '@auth0/auth0-angular';
 import { LocalStorageService } from './local-storage.service';
 import { FirebaseService } from './firebase.service';
 import { Injectable } from '@angular/core';
@@ -10,24 +11,41 @@ import { Task } from '../shared/task.model';
 })
 export class UserService {
 
-  UserProjectsIds: String[] | null = null;
-  UserTasksIds: String[] | null = null;
-  userLoggedIn: User | null = null;
-
   projects: Project[] = [];
   tasks: Task[] = [];
 
-  constructor(private firebaseService: FirebaseService, private localStorageService: LocalStorageService) {
-    this.UserTasksIds = this.localStorageService.getUsersTasksIds();
-    this.UserProjectsIds = this.localStorageService.getUsersProjectsIds();
+  userProfile: User | null = null;
+
+  userIsLoggedIn: boolean = false; // When user is logged by auth0
+  userProfileDoesntExistInFirebase: boolean = true; //when userProfile is not avaliable from firebase
+
+  constructor(
+    private firebaseService: FirebaseService,
+    private localStorageService: LocalStorageService,
+    authService: AuthService) {
+
+    authService.user$.subscribe(userData => {
+      if (userData && userData.email) {
+        this.userIsLoggedIn = true;
+        this.getUser(userData.email); // looking for profile in firebase
+      }
+    });
   }
 
-  getUser() {
+  getUser(email: string) {
     this
       .firebaseService
-      .getUser('kkrychowski@interia.pl')
-      .subscribe(resData => {
-        this.localStorageService.saveUserDataToLocalStorage(resData);
+      .getUser(email)
+      .subscribe(userProfileData => {
+        if(userProfileData.id){
+          this.userProfileDoesntExistInFirebase = false;
+          this.localStorageService.saveUserDataToLocalStorage(userProfileData);
+          this.userProfile = userProfileData;
+          console.log(this.userProfile);
+        } else {
+          console.warn('user under:' + email + ' email doesnt exist in firebase');
+        }
+
       });
   }
 
@@ -38,6 +56,7 @@ export class UserService {
       .subscribe(
         project => {
           const projectIsAlreadyAssigned = this.checkIfProjectIsAlreadyAssignedToArray(project);
+
           if (!projectIsAlreadyAssigned)
             this.projects.push(project);
         }
@@ -51,12 +70,12 @@ export class UserService {
       .subscribe(
         task => {
           const taskIsAlreadyAssigned = this.checkIfTaskIsAlreadyAssignedToArray(task);
+
           if (!taskIsAlreadyAssigned)
             this.tasks.push(task);
         }
       );
   }
-
 
   checkIfProjectIsAlreadyAssignedToArray(projectToCompare: Project): boolean {
     const foundProject = this.projects.find(projectToFind => projectToFind.title === projectToCompare.title);

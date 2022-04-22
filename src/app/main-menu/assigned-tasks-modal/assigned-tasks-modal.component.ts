@@ -14,8 +14,8 @@ export class AssignedTasksModalComponent implements OnInit{
   selectedTask: Task | null = null;
 
   constructor(private userService: UserService) {
-      if (!this.tasksIds) {
-        this.tasksIds = this.userService.UserTasksIds;
+      if (!this.tasksIds && this.userService.userProfile) {
+        this.tasksIds = this.userService.userProfile.tasks;
       }
      }
 

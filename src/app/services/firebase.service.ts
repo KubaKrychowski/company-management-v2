@@ -8,6 +8,7 @@ import { HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 const FIREBASE_URL = 'https://company-management-v2-default-rtdb.europe-west1.firebasedatabase.app/';
+//TODO: Change all methods name for getRequest(params) postRequest(params) etc.
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,7 @@ export class FirebaseService {
             Name: '',
             Nickname: '',
             Surname: '',
+            imageURL: '',
             id: '',
             email: '',
             projects: [],

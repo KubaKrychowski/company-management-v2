@@ -17,8 +17,8 @@ export class AssignedProjectsModalComponent implements OnInit {
   projectsIds: String[] | null = null;
 
   constructor(public activeModal: NgbActiveModal, private userService: UserService) {
-    if (!this.projectsIds) {
-      this.projectsIds = this.userService.UserProjectsIds;
+    if (!this.projectsIds && this.userService.userProfile) {
+      this.projectsIds = this.userService.userProfile.projects;
     }
   }
 

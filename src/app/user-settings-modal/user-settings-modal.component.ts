@@ -1,6 +1,5 @@
 import { UserService } from 'src/app/services/user.service';
 import { User } from './../shared/user.model';
-import { FirebaseService } from './../services/firebase.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -24,9 +23,7 @@ export class UserSettingsModalComponent implements OnInit {
     tasks: [],
   }
 
-
-
-  constructor(private firebaseService: FirebaseService,public userService: UserService) { }
+  constructor(public userService: UserService) { }
 
   ngOnInit(): void {
     if(this.userService.userProfile){
@@ -34,7 +31,6 @@ export class UserSettingsModalComponent implements OnInit {
     }
   }
   // TODO: Change name of getUser method to getUserProfile
-
 
   changeImage() {
     this.user.imageURL = this.imageURL;

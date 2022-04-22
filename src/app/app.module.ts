@@ -44,6 +44,7 @@ import {
   Tooltip,
 } from 'chart.js';
 import { UserSettingsModalComponent } from './user-settings-modal/user-settings-modal.component';
+import { ProfileCreatorModalComponent } from './home/profile-creator-modal/profile-creator-modal.component';
 
 Chart.register(
   ArcElement,
@@ -69,6 +70,7 @@ Chart.register(
   Legend,
   Title,
   Tooltip,
+
 );
 
 @NgModule({
@@ -85,6 +87,7 @@ Chart.register(
     AuthButtonComponent,
     HomeComponent,
     UserSettingsModalComponent,
+    ProfileCreatorModalComponent,
   ],
 
   imports: [

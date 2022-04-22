@@ -1,3 +1,4 @@
+import { ProfileCreatorModalComponent } from './../home/profile-creator-modal/profile-creator-modal.component';
 import { UserService } from './../services/user.service';
 import { CorporateStructureModalComponent } from './../main-menu/corporate-structure-modal/corporate-structure-modal.component';
 import { AssignedTasksModalComponent } from './../main-menu/assigned-tasks-modal/assigned-tasks-modal.component';
@@ -33,5 +34,9 @@ export class RightMenuComponent {
 
   openUserSettingsModal() {
     const modalRef = this.modalService.open(UserSettingsModalComponent, { size: 'xl' });
+  }
+
+  openProfileCreatorModal() {
+    const modalRef = this.modalService.open(ProfileCreatorModalComponent, { size: 'xl' });
   }
 }

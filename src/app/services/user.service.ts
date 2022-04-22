@@ -15,7 +15,7 @@ export class UserService {
   tasks: Task[] = [];
 
   userProfile: User | null = null;
-
+  userEmail: string = '';
   userIsLoggedIn: boolean = false; // When user is logged by auth0
   userProfileDoesntExistInFirebase: boolean = true; //when userProfile is not avaliable from firebase
 
@@ -27,6 +27,7 @@ export class UserService {
     authService.user$.subscribe(userData => {
       if (userData && userData.email) {
         this.userIsLoggedIn = true;
+        this.userEmail = userData.email;
         this.getUser(userData.email); // looking for profile in firebase
       }
     });
@@ -37,7 +38,7 @@ export class UserService {
       .firebaseService
       .getUser(email)
       .subscribe(userProfileData => {
-        if(userProfileData.id){
+        if (userProfileData.id) {
           this.userProfileDoesntExistInFirebase = false;
           this.localStorageService.saveUserDataToLocalStorage(userProfileData);
           this.userProfile = userProfileData;
@@ -93,6 +94,23 @@ export class UserService {
       return true;
     else
       return false;
+  }
+
+  createUserProfile(name: string, surname: string, nickname: string, imageURL: string) {
+    if (this.userIsLoggedIn) {
+      const user: User = {
+        Name: name,
+        Surname: surname,
+        Nickname: nickname,
+        imageURL: imageURL,
+        email: this.userEmail,
+        projects: [],
+        tasks: []
+      };
+
+      this.firebaseService.postUserProfile(user);
+    }
+
   }
 }
 

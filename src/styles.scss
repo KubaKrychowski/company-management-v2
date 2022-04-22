@@ -34,5 +34,9 @@ body {
   margin-left: auto;
 }
 
+.btn-float-right{
+  display: block; float: right;
+}
+
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';

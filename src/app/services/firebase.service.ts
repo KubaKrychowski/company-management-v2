@@ -119,4 +119,11 @@ export class FirebaseService {
         })
       );
   }
+
+  postUserProfile(user: User) {
+    this
+      .http
+      .post('https://company-management-v2-default-rtdb.europe-west1.firebasedatabase.app/Users.json', user)
+      .subscribe(responseData => console.log(responseData));
+  }
 }

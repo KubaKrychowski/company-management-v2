@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="title">
+    Profile Creator
+  </div>
+
+  <hr class="mt-2">
+  <div class="creator-form">
+    <div class="preview">
+      <!-- use hierarchy -->
+      <div class="avatar">
+        <span>
+          Users' avatar:
+        </span>
+        <img src="{{newUserImageURL}}" style="border-radius: 100%;" width="64" height="64">
+      </div>
+
+      <div class="informations">
+
+        <b>
+          Nickname: {{newUserNickname}}
+        </b>
+
+        <p>
+          Name: {{newUserName}}
+        </p>
+
+        <p>
+          Surname: {{newUserSurname}}
+        </p>
+      </div>
+    </div>
+
+    <form (ngSubmit)="onCreateNewProfile()" class="form" #createProfileForm="ngForm">
+      <label for="name">
+        Name:
+      </label>
+
+      <input [(ngModel)]="newUserName" name="newName" class="form-control" id="name" required>
+
+      <label for="surname">
+        Surname:
+      </label>
+
+      <input [(ngModel)]="newUserSurname" name="newSurname" class="form-control" id="surname" required>
+
+      <label for="nickname">
+        Nickname:
+      </label>
+
+      <input [(ngModel)]="newUserNickname" name="newNickname" class="form-control" id="nickname" required>
+
+      <label for="imageURL">
+        <span style="color: red">
+          *
+        </span>
+
+        Image URL:
+      </label>
+
+      <input [(ngModel)]="newUserImageURL" name="newImageURL" class="form-control" id="imageURL">
+
+      <span style="color: red;" class="mt-2">
+        * not required
+      </span>
+
+
+      <button type="submit" [disabled]="!createProfileForm.valid" class="btn btn-success mt-2 btn-float-right">
+        Create Profile
+      </button>
+    </form>
+  </div>
+</div>

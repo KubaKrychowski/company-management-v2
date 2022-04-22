@@ -12,6 +12,7 @@ export class UserSettingsModalComponent implements OnInit {
   imageURL: string = '';
   email: string = '';
   userDoesntExistInFirebase: boolean = false;
+  isEditModeEnabled: boolean = false;
 
   user: User = {
     Name: '',
@@ -34,5 +35,9 @@ export class UserSettingsModalComponent implements OnInit {
 
   changeImage() {
     this.user.imageURL = this.imageURL;
+  }
+
+  toggleEditProfileMode(){
+    this.isEditModeEnabled = !this.isEditModeEnabled;
   }
 }

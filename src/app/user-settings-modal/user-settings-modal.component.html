@@ -29,47 +29,67 @@
         <div class="change-image-field mt-2">
           <img src="{{user.imageURL}}" width="128" height="128" style="border-radius: 100%;">
 
-          <input [(ngModel)]="imageURL" class="form-control mt-2" type="text" placeholder="type image URL here:">
+          <form *ngIf="isEditModeEnabled">
+            <input [(ngModel)]="imageURL" class="form-control mt-2" type="text" placeholder="type image URL here:">
 
-          <button (click)="changeImage()" style="margin-right: auto;" class="btn btn-success mt-2">
-            Save Image
+            <button (click)="changeImage()" style="margin-right: auto;" class="btn btn-success mt-2">
+              Save Image
+            </button>
+          </form>
+        </div>
+
+        <div *ngIf="!isEditModeEnabled && userService.userProfile" class="overview">
+          <div class="name">
+            <b>Name:</b> {{userService.userProfile.Name}}
+          </div>
+
+          <div class="name">
+            <b>Surname:</b> {{userService.userProfile.Surname}}
+          </div>
+
+          <div class="email">
+            <b>email:</b> {{userService.userProfile.email}}
+          </div>
+
+          <button (click)="toggleEditProfileMode()" class="btn btn-primary mt-2">
+            Edit Profile
           </button>
         </div>
 
-        <div class="edit-form">
+        <div *ngIf="isEditModeEnabled" class="edit-form">
           <label for="name">
             Name:
           </label>
 
-          <input [(ngModel)]="user.Name" [disabled]="true" id="name" class="form-control">
+          <input [(ngModel)]="user.Name" id="name" class="form-control" required>
 
           <label for="surname">
             Surname:
           </label>
 
-          <input [(ngModel)]="user.Surname" [disabled]="true" id="surname" class="form-control">
+          <input [(ngModel)]="user.Surname"  id="surname" class="form-control" required>
 
           <label for="nickname">
             NickName:
           </label>
 
-          <input [(ngModel)]="user.Nickname" [disabled]="true" id="nickname" class="form-control">
+          <input [(ngModel)]="user.Nickname"  id="nickname" class="form-control" required>
 
           <label for="email">
             email:
           </label>
 
-          <input [(ngModel)]="user.email" [disabled]="true" id="email" class="form-control">
+          <input [(ngModel)]="user.email"  id="email" class="form-control" required>
 
           <button class="btn btn-primary mt-2">
             Save Changes
           </button>
+
+          <button (click)="toggleEditProfileMode()" class="btn btn-danger mt-2 ml-2">
+            Discard Changes
+          </button>
         </div>
-
-
-
       </div>
-
     </div>
   </div>
 </div>

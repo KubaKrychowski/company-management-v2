@@ -35,8 +35,4 @@ export class RightMenuComponent {
   openUserSettingsModal() {
     const modalRef = this.modalService.open(UserSettingsModalComponent, { size: 'xl' });
   }
-
-  openProfileCreatorModal() {
-    const modalRef = this.modalService.open(ProfileCreatorModalComponent, { size: 'xl' });
-  }
 }

@@ -1,7 +1,8 @@
+import { v4 } from 'uuid';
+import { transaction } from './../shared/transaction.model';
 import { Task } from 'src/app/shared/task.model';
 import { Project } from './../shared/project.model';
 import { User } from './../shared/user.model';
-
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpParams } from '@angular/common/http';
@@ -28,21 +29,19 @@ export class FirebaseService {
 
     return this
       .http
-      .get<{ [key: string]: User }>(FIREBASE_URL + 'Users.json',
-        {
-          params: searchParams
-        }
-      )
+      .get<{ [key: string]: User }>(FIREBASE_URL + 'Users.json', { params: searchParams })
       .pipe(
         map(responseData => {
           let user: User = {
             Name: '',
             Nickname: '',
             Surname: '',
+            position: '',
             imageURL: '',
             id: '',
             email: '',
             projects: [],
+            transactions: [],
             tasks: []
           };
 
@@ -50,7 +49,7 @@ export class FirebaseService {
             if (responseData.hasOwnProperty(key)) {
               user = { ...responseData[key], id: key };
             }
-          }
+          };
           return user;
         }
         ));
@@ -63,10 +62,9 @@ export class FirebaseService {
     searchParams = searchParams.append('orderBy', '"$key"');
     searchParams = searchParams.append('equalTo', '"' + projectId + '"');
 
-    return this.http.get<{ [key: string]: Project }>(FIREBASE_URL + 'projects.json',
-      {
-        params: searchParams
-      })
+    return this
+      .http
+      .get<{ [key: string]: Project }>(FIREBASE_URL + 'projects.json', { params: searchParams })
       .pipe(
         map(responseData => {
           let project: Project = {
@@ -81,7 +79,7 @@ export class FirebaseService {
             if (responseData.hasOwnProperty(key)) {
               project = { ...responseData[key], id: key };
             }
-          }
+          };
           return project;
         })
       );
@@ -114,16 +112,59 @@ export class FirebaseService {
             if (responseData.hasOwnProperty(key)) {
               task = { ...responseData[key], id: key };
             }
-          }
+          };
           return task;
         })
       );
   }
 
-  postUserProfile(user: User) {
+  postUserProfile(user: User,) {
     this
       .http
-      .post('https://company-management-v2-default-rtdb.europe-west1.firebasedatabase.app/Users.json', user)
+      .post(FIREBASE_URL + 'Users.json', user)
       .subscribe(responseData => console.log(responseData));
+  }
+
+  updateUserProfile(user: User, userID: string) {
+    this
+      .http
+      .patch(FIREBASE_URL + 'Users/' + userID + '.json', user).subscribe(
+        responseData => {
+          console.log(responseData);
+        }
+      );
+  }
+
+  createTransaction(transaction: transaction) {
+    return this.http.post(FIREBASE_URL + 'transactions.json', transaction);
+  }
+
+  getTransaction(transactionID: string) {
+    let searchParams = new HttpParams();
+
+    searchParams = searchParams.append('orderBy', '"id"');
+    searchParams = searchParams.append('equalTo', '"' + transactionID + '"');
+
+    return this
+      .http
+      .get<{ [key: string]: transaction }>(
+        FIREBASE_URL + 'transactions.json',
+        { params: searchParams })
+      .pipe(
+        map(responseData => {
+          let transaction: transaction = {
+            type: '',
+            value: 0,
+            id: '',
+          };
+
+          for (const key in responseData) {
+            if (responseData.hasOwnProperty(key)) {
+              transaction = { ...responseData[key] };
+            }
+          };
+          return transaction;
+        })
+      );
   }
 }

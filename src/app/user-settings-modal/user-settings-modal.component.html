@@ -29,26 +29,38 @@
         <div class="change-image-field mt-2">
           <img src="{{user.imageURL}}" width="128" height="128" style="border-radius: 100%;">
 
-          <form *ngIf="isEditModeEnabled">
-            <input [(ngModel)]="imageURL" class="form-control mt-2" type="text" placeholder="type image URL here:">
+          <form (ngSubmit)="changeImage()" *ngIf="isEditModeEnabled">
+            <input [(ngModel)]="imageURL" name="imageURL" class="form-control mt-2" type="text" placeholder="type image URL here:">
 
-            <button (click)="changeImage()" style="margin-right: auto;" class="btn btn-success mt-2">
+            <button type="submit" style="margin-right: auto;" class="btn btn-success mt-2">
               Save Image
             </button>
           </form>
         </div>
 
-        <div *ngIf="!isEditModeEnabled && userService.userProfile" class="overview">
+        <div class="overview" *ngIf="!isEditModeEnabled && userService.userProfile">
           <div class="name">
-            <b>Name:</b> {{userService.userProfile.Name}}
+            <b>
+              Name:
+            </b>
+
+            {{userService.userProfile.Name}}
           </div>
 
           <div class="name">
-            <b>Surname:</b> {{userService.userProfile.Surname}}
+            <b>
+              Surname:
+            </b>
+
+            {{userService.userProfile.Surname}}
           </div>
 
           <div class="email">
-            <b>email:</b> {{userService.userProfile.email}}
+            <b>
+              email:
+            </b>
+
+            {{userService.userProfile.email}}
           </div>
 
           <button (click)="toggleEditProfileMode()" class="btn btn-primary mt-2">
@@ -57,37 +69,39 @@
         </div>
 
         <div *ngIf="isEditModeEnabled" class="edit-form">
-          <label for="name">
-            Name:
-          </label>
+          <form (ngSubmit)="editUserProfile()" #editProfileform="ngForm">
+            <label for="name">
+              Name:
+            </label>
 
-          <input [(ngModel)]="user.Name" id="name" class="form-control" required>
+            <input [(ngModel)]="user.Name" name="name" id="name" class="form-control" required>
 
-          <label for="surname">
-            Surname:
-          </label>
+            <label for="surname">
+              Surname:
+            </label>
 
-          <input [(ngModel)]="user.Surname"  id="surname" class="form-control" required>
+            <input [(ngModel)]="user.Surname" name="surname" id="surname" class="form-control" required>
 
-          <label for="nickname">
-            NickName:
-          </label>
+            <label for="nickname">
+              NickName:
+            </label>
 
-          <input [(ngModel)]="user.Nickname"  id="nickname" class="form-control" required>
+            <input [(ngModel)]="user.Nickname" name="nickname" id="nickname" class="form-control" required>
 
-          <label for="email">
-            email:
-          </label>
+            <label for="position">
+              Position:
+            </label>
 
-          <input [(ngModel)]="user.email"  id="email" class="form-control" required>
+            <input [(ngModel)]="user.position" name="position" id="position" class="form-control" required>
 
-          <button class="btn btn-primary mt-2">
-            Save Changes
-          </button>
+            <button [disabled]="!editProfileform.valid" name="submitButton" type="submit" class="btn btn-primary mt-2">
+              Save Changes
+            </button>
 
-          <button (click)="toggleEditProfileMode()" class="btn btn-danger mt-2 ml-2">
-            Discard Changes
-          </button>
+            <button (click)="toggleEditProfileMode()" class="btn btn-danger mt-2 ml-2">
+              Discard Changes
+            </button>
+          </form>
         </div>
       </div>
     </div>

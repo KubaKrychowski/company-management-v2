@@ -17,31 +17,27 @@
     <app-auth-button></app-auth-button>
   </div>
   <!-- TODO: FIX ALIGN -->
-  <div
-    *ngIf="!userService.userProfile
+  <div *ngIf="!userService.userProfile
       && userService.userIsLoggedIn
-      && !userService.userProfileDoesntExistInFirebase"
-    class="spinner-border mt-2 ml-a"
-    role="status">
+      && !userService.userProfileDoesntExistInFirebase" class="spinner-border mt-2 ml-a" role="status">
   </div>
 
-  <div class="mt-2" style="color: rgba(253, 173, 0, 0.966)"
+  <div class="error mt-2" style="color: rgba(253, 173, 0, 0.966)"
     *ngIf="userService.userProfileDoesntExistInFirebase && userService.userIsLoggedIn">
     <i class="bi bi-exclamation-triangle-fill"></i>
 
     To unlock all features please create user profile
 
     <div class="create-profile">
-      <button (click)="openProfileCreatorModal()" class="btn btn-success mt-2">
-        Go to profile creator
-      </button>
+
     </div>
   </div>
 
 
 
-  <div *ngIf="!userService.userIsLoggedIn">
-    <i style="color: red" class="bi bi-exclamation-triangle-fill"></i> You're not logged in
+  <div class="error" *ngIf="!userService.userIsLoggedIn">
+    <i style="color: red" class="bi bi-exclamation-triangle-fill"></i>
+    You're not logged in
   </div>
   <div class="user-preview" *ngIf="userService.userProfile">
     <img src="{{userService.userProfile.imageURL}}" width="64" height="64">
@@ -51,7 +47,7 @@
     </div>
 
     <div class="user-info">
-      Front-end Developer
+      {{userService.userProfile.position}}
     </div>
   </div>
 

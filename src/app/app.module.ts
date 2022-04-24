@@ -45,6 +45,7 @@ import {
 } from 'chart.js';
 import { UserSettingsModalComponent } from './user-settings-modal/user-settings-modal.component';
 import { ProfileCreatorModalComponent } from './home/profile-creator-modal/profile-creator-modal.component';
+import { TransactionsModalComponent } from './main-menu/transactions-modal/transactions-modal.component';
 
 Chart.register(
   ArcElement,
@@ -88,6 +89,7 @@ Chart.register(
     HomeComponent,
     UserSettingsModalComponent,
     ProfileCreatorModalComponent,
+    TransactionsModalComponent,
   ],
 
   imports: [

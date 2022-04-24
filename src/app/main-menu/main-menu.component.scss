@@ -1,24 +1,25 @@
 $window-width: 16%;
 
-.container-fluid{
+.container-fluid {
   display: flex;
   flex-direction: row;
   min-height: 100vh;
 }
-  .left-menu{
-    width: 15%;
-  }
 
-  .main-menu{
-    background-color: rgba(219, 219, 219, 0.471);
-    padding: 1em;
-    width: 70%;
-  }
+.left-menu {
+  width: 15%;
+}
 
-  .right-menu{
-    background-color: rgba(186, 219, 253, 0.596);
-    width: 15%;
-  }
+.main-menu {
+  background-color: rgba(219, 219, 219, 0.471);
+  padding: 1em;
+  width: 70%;
+}
+
+.right-menu {
+  background-color: rgba(186, 219, 253, 0.596);
+  width: 15%;
+}
 
 .field-shadow {
   -webkit-box-shadow: 8px 8px 7px -3px rgba(66, 68, 90, 1);
@@ -81,6 +82,11 @@ $window-width: 16%;
   border-radius: 0.75em;
   width: $window-width;
   background-color: rgb(142, 224, 171);
+}
+
+.revenue:hover{
+  cursor: pointer;
+  background-color: rgb(76, 165, 107);
 }
 
 .project-income {
@@ -170,4 +176,17 @@ $window-width: 16%;
   padding: 2%;
   border-radius: 0.75em;
   text-align: justify;
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.message-title{
+  font-size: 3em;
+  color: rgb(73, 73, 73);
+  font: 600;
 }

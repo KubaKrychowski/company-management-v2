@@ -5,14 +5,18 @@ import { Injectable } from '@angular/core';
 import { User } from '../shared/user.model';
 import { Project } from '../shared/project.model';
 import { Task } from '../shared/task.model';
+import { transaction } from '../shared/transaction.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
+  //TODO: Find better way to solve problem: duplication of tasks/projects/transactions in modal
+
   projects: Project[] = [];
   tasks: Task[] = [];
+  transactions: transaction[] = [];
 
   userProfile: User | null = null;
   userEmail: string = '';
@@ -96,21 +100,31 @@ export class UserService {
       return false;
   }
 
-  createUserProfile(name: string, surname: string, nickname: string, imageURL: string) {
+  checkIfTransactionInAlreadyAssignedToArray(transactionToCompare: transaction): boolean {
+    const foundTransaction = this.transactions.find(transactionToFind => transactionToFind.id === transactionToCompare.id);
+
+    if (foundTransaction)
+      return true;
+    else
+      return false;
+  }
+
+  createUserProfile(name: string, surname: string, nickname: string, imageURL: string, position: string) {
     if (this.userIsLoggedIn) {
       const user: User = {
         Name: name,
         Surname: surname,
         Nickname: nickname,
+        position: position,
         imageURL: imageURL,
         email: this.userEmail,
+        transactions: [],
         projects: [],
         tasks: []
       };
 
       this.firebaseService.postUserProfile(user);
     }
-
   }
 }
 

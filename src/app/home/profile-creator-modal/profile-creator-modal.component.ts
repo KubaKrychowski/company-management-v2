@@ -13,12 +13,18 @@ export class ProfileCreatorModalComponent {
   newUserSurname: string = '';
   newUserNickname: string = '';
   newUserImageURL: string = '';
+  newPosition: string = '';
   constructor(private userService: UserService) { }
 
 
 
   onCreateNewProfile() {
     console.log('works');
-    this.userService.createUserProfile(this.newUserName, this.newUserSurname, this.newUserNickname, this.newUserImageURL);
+    this.userService.createUserProfile(this.newUserName, this.newUserSurname, this.newUserNickname, this.newUserImageURL, this.newPosition);
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
+
   }
 }

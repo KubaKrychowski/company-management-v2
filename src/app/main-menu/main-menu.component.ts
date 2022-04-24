@@ -1,7 +1,13 @@
+import { TransactionsModalComponent } from './transactions-modal/transactions-modal.component';
+import { FirebaseService } from './../services/firebase.service';
+import { transaction } from './../shared/transaction.model';
+import { ProfileCreatorModalComponent } from './../home/profile-creator-modal/profile-creator-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { FinanceService } from '../services/finance.service';
-
+import { v4 } from 'uuid';
 @Component({
   selector: 'app-main-menu',
   templateUrl: './main-menu.component.html',
@@ -10,9 +16,21 @@ import { FinanceService } from '../services/finance.service';
 
 export class MainMenuComponent implements OnInit {
   balance: number = 0;
-  constructor(private financeService: FinanceService) {
+
+  transaction: transaction = {
+    type: 'income',
+    value: 10000,
+    id: v4()
+  }
+
+  constructor(
+    private financeService: FinanceService,
+    public userService: UserService,
+    private modalService: NgbModal,
+    private firebaseService: FirebaseService) {
     this.balance = this.financeService.calculateTotalBalance();
   }
+
 
   ngOnInit(): void {
 
@@ -95,44 +113,69 @@ export class MainMenuComponent implements OnInit {
       }
     });
 
-    const myChart2 = new Chart(ctx2, {
-      type: 'line',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
+    // const myChart2 = new Chart(ctx2, {
+    //   type: 'line',
+    //   data: {
+    //     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    //     datasets: [{
+    //       label: '# of Votes',
+    //       data: [12, 19, 3, 5, 2, 3],
 
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
+    //       borderWidth: 1
+    //     }]
+    //   },
+    //   options: {
+    //     scales: {
+    //       y: {
+    //         beginAtZero: true
+    //       }
+    //     }
+    //   }
+    // });
+
+    // const myChart3 = new Chart(ctx3, {
+    //   type: 'line',
+    //   data: {
+    //     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    //     datasets: [{
+    //       label: '# of Votes',
+    //       data: [12, 19, 3, 5, 2, 3],
+
+    //       borderWidth: 1
+    //     }]
+    //   },
+    //   options: {
+    //     scales: {
+    //       y: {
+    //         beginAtZero: true
+    //       }
+    //     }
+    //   }
+    // });
+  }
+
+  openProfileCreatorModal() {
+    const modalRef = this.modalService.open(ProfileCreatorModalComponent, { size: 'xl' });
+  }
+
+  createTransaction() {
+    this.firebaseService.createTransaction(this.transaction).subscribe(
+      () => {
+        if (this.userService.userProfile && this.transaction.id && this.userService.userProfile.id) {
+          this.userService.userProfile.transactions.push(this.transaction.id);
+          this.firebaseService.updateUserProfile(this.userService.userProfile, this.userService.userProfile.id);
         }
       }
-    });
+    )
+  }
 
-    const myChart3 = new Chart(ctx3, {
-      type: 'line',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
+  getTransaction() {
+    if (this.userService.userProfile && this.transaction.id && this.userService.userProfile.id) {
+      this.firebaseService.getTransaction(this.userService.userProfile?.transactions[0]).subscribe(res => console.log(res));
+    }
+  }
 
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
+  openTransactionsModal() {
+    this.modalService.open(TransactionsModalComponent, { size: 'xl' });
   }
 }

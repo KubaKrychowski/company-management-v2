@@ -1,3 +1,6 @@
+import { v4 } from 'uuid';
+import { transaction } from './../shared/transaction.model';
+import { FirebaseService } from './../services/firebase.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,11 +8,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './left-menu.component.html',
   styleUrls: ['./left-menu.component.scss']
 })
-export class LeftMenuComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class LeftMenuComponent {
 
 }
